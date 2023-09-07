@@ -15,9 +15,14 @@ public class JpaMain {
 
         tx.begin();
         // code
-        Member member = new Member(1L, "YKJ");
-        em.persist(member);
-
+        Member findMember = em.find(Member.class, 5L);
+        findMember.setName("ABCDE");
+        Member newMEmber = new Member();
+        newMEmber.setId(7L);
+        newMEmber.setName("HelloJPA");
+        em.persist(newMEmber);
+        em.flush();
+        System.out.println("=======");
         tx.commit();
         em.close();
         emf.close();
