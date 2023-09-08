@@ -1,8 +1,6 @@
-package org.example;
+package org.example.mapping;
 
-import org.example.domain.Member;
-import org.example.domain.mapping.Customer;
-import org.example.domain.mapping.Team;
+import org.example.domain.Customer;
 
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
@@ -17,15 +15,9 @@ public class MappingMain {
         tx.begin();
 
         // code
-        Team team = new Team();
-        team.setId(4L);
+        Customer findCustomer = em.find(Customer.class, 1L);
 
-        Customer customer = new Customer();
-        customer.setId(4L);
-        customer.setTeam(team);
-
-        em.persist(team);
-        em.persist(customer);
+        System.out.println(findCustomer.getTeam().getClass());
 
         tx.commit();
         em.close();

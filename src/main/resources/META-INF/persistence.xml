@@ -7,8 +7,8 @@
         <class>org.example.domain.Member</class>
         <class>org.example.domain.item.Item</class>
         <class>org.example.domain.item.Movie</class>
-        <class>org.example.domain.mapping.Team</class>
-        <class>org.example.domain.mapping.Customer</class>
+        <class>org.example.domain.Team</class>
+        <class>org.example.domain.Customer</class>
         <properties>
             <!-- 필수 속성 -->
             <property name="javax.persistence.jdbc.driver" value="com.mysql.cj.jdbc.Driver"/>

@@ -1,4 +1,4 @@
-package org.example.domain.mapping;
+package org.example.domain;
 
 import javax.persistence.*;
 
@@ -8,7 +8,7 @@ public class Customer {
     @Id
     private Long id;
 
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.PERSIST)
     private Team team;
 
     public Long getId() {
