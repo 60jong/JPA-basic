@@ -5,7 +5,10 @@
     <persistence-unit name="hello">
         <!-- Entity_gradle -->
         <class>org.example.domain.Member</class>
-
+        <class>org.example.domain.item.Item</class>
+        <class>org.example.domain.item.Movie</class>
+        <class>org.example.domain.mapping.Team</class>
+        <class>org.example.domain.mapping.Customer</class>
         <properties>
             <!-- 필수 속성 -->
             <property name="javax.persistence.jdbc.driver" value="com.mysql.cj.jdbc.Driver"/>
@@ -17,7 +20,6 @@
             <property name="hibernate.show_sql" value="true"/>
             <property name="hibernate.format_sql" value="true"/>
             <property name="hibernate.use_sql_comments" value="true"/>
-            <!--<property name="hibernate.hbm2ddl.auto" value="create" />-->
 
         </properties>
     </persistence-unit>
