@@ -17,16 +17,16 @@ public class ValeTypeCollectionMain {
         tx.begin();
 
         // code
-        List<Member> profileImages = em.createQuery("select m from Member m join fetch m.profileImages", Member.class)
+        List<Member> findMembers = em.createQuery("select distinct m from Member m join fetch m.profileImages.profileImages", Member.class)
                 .getResultList();
 
-        profileImages.stream()
+        findMembers.stream()
                 .map(Member::getProfileImages)
-                .forEach(images -> images.stream()
-                        .forEach(image -> {
-                            System.out.println(image.getUrl());
-                        })
+                .forEach(pi -> {
+                            System.out.println(pi.getProfileImageUrls());
+                        }
                 );
+
 
         tx.commit();
         em.close();

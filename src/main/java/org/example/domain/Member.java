@@ -11,12 +11,8 @@ public class Member {
     private Long id;
     private String name;
 
-    @ElementCollection
-    @CollectionTable(
-            name = "Profile_Image",
-            joinColumns = @JoinColumn(name = "member_id")
-    )
-    private List<ProfileImage> profileImages = new ArrayList<>();
+    @Embedded
+    private ProfileImages profileImages;
 
     public Long getId() {
         return id;
@@ -34,7 +30,7 @@ public class Member {
         this.name = name;
     }
 
-    public List<ProfileImage> getProfileImages() {
-        return profileImages;
+    public ProfileImages getProfileImages() {
+        return this.profileImages;
     }
 }
