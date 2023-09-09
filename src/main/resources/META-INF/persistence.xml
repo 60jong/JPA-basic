@@ -5,6 +5,7 @@
     <persistence-unit name="hello">
         <!-- Entity_gradle -->
         <class>org.example.domain.Member</class>
+        <class>org.example.domain.ProfileImage</class>
         <class>org.example.domain.item.Item</class>
         <class>org.example.domain.item.Movie</class>
         <class>org.example.domain.Team</class>
@@ -20,7 +21,7 @@
             <property name="hibernate.show_sql" value="true"/>
             <property name="hibernate.format_sql" value="true"/>
             <property name="hibernate.use_sql_comments" value="true"/>
-
+            <property name="jpa.properties.hibernate.hbm2ddl.auto" value="update"/>
         </properties>
     </persistence-unit>
 </persistence>
