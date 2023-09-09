@@ -17,14 +17,16 @@ public class ValeTypeCollectionMain {
         tx.begin();
 
         // code
-        ProfileImage profileImage = new ProfileImage("urlA");
+        List<Member> profileImages = em.createQuery("select m from Member m join fetch m.profileImages", Member.class)
+                .getResultList();
 
-        Member member = new Member();
-        member.setId(1L);
-        member.setName("memberA");
-        member.getProfileImages().add(profileImage);
-
-        em.persist(member);
+        profileImages.stream()
+                .map(Member::getProfileImages)
+                .forEach(images -> images.stream()
+                        .forEach(image -> {
+                            System.out.println(image.getUrl());
+                        })
+                );
 
         tx.commit();
         em.close();
