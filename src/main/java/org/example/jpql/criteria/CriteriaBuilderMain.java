@@ -1,4 +1,4 @@
-package org.example.jpql;
+package org.example.jpql.criteria;
 
 import org.example.domain.Customer;
 import org.example.domain.Member;

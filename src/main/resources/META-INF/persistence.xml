@@ -10,18 +10,24 @@
         <class>org.example.domain.item.Movie</class>
         <class>org.example.domain.Team</class>
         <class>org.example.domain.Customer</class>
+        <class>org.example.jpql.domain.User</class>
+        <class>org.example.jpql.domain.Club</class>
+        <class>org.example.jpql.domain.Order</class>
+        <class>org.example.jpql.domain.Address</class>
+        <class>org.example.jpql.domain.Product</class>
+
         <properties>
             <!-- 필수 속성 -->
             <property name="javax.persistence.jdbc.driver" value="com.mysql.cj.jdbc.Driver"/>
             <property name="javax.persistence.jdbc.user" value="root"/>
             <property name="javax.persistence.jdbc.password" value="991911"/>
             <property name="javax.persistence.jdbc.url" value="jdbc:mysql://localhost:3306/basic"/>
-            <property name="hibernate.dialect" value="org.hibernate.dialect.MySQLDialect"/>
+            <property name="hibernate.dialect" value="org.hibernate.dialect.MySQL8Dialect"/>
             <!-- 옵션 -->
             <property name="hibernate.show_sql" value="true"/>
             <property name="hibernate.format_sql" value="true"/>
             <property name="hibernate.use_sql_comments" value="true"/>
-            <property name="jpa.properties.hibernate.hbm2ddl.auto" value="update"/>
+            <property name="hibernate.hbm2ddl.auto" value="update"/>
         </properties>
     </persistence-unit>
 </persistence>
