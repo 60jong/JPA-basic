@@ -1,10 +1,12 @@
 package org.example.jpql;
 
+import org.example.jpql.domain.Club;
 import org.example.jpql.domain.User;
 import org.example.jpql.domain.dto.UserDto;
 
 import javax.persistence.*;
 import java.util.List;
+import java.util.Random;
 
 public class JpqlMain {
     public static void main(String[] args) {
@@ -14,15 +16,24 @@ public class JpqlMain {
         tx.begin();
 
         // code
-        List<User> users = em.createQuery("select distinct u from User u join fetch u.club", User.class)
+//        List<User> users = em.createQuery("select u from User u join u.club", User.class)
+//                .getResultList();
+//
+//        for (User user : users) {
+//            System.out.println("User : " + user.getName());
+//            System.out.println("User-Club : " + user.getClub().getName());
+//        }
+
+        List<Club> clubs = em.createQuery("select c from Club c join c.users", Club.class)
                 .getResultList();
 
-        for (User user : users) {
-            System.out.println("User : " + user.getId());
-            System.out.println("User : " + user.getAge());
-            System.out.println("User-Club : " + user.getClub().getId());
-            System.out.println("User-Club : " + user.getClub().getName());
+        for (Club club : clubs) {
+            System.out.println("Club : " + club.getName());
+            club.getUsers().stream()
+                            .map(User::getName)
+                            .forEach(System.out::println);
         }
+
         tx.commit();
         em.close();
         emf.close();
