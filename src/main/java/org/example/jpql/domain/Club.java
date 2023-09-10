@@ -11,6 +11,8 @@ public class Club {
     @Id @GeneratedValue
     private Long id;
 
+    private String name;
+
     @OneToMany(mappedBy = "club", orphanRemoval = true)
     private List<User> users;
 
@@ -28,5 +30,13 @@ public class Club {
 
     public void setUsers(List<User> users) {
         this.users = users;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
     }
 }

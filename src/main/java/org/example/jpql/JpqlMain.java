@@ -1,5 +1,6 @@
 package org.example.jpql;
 
+import org.example.jpql.domain.User;
 import org.example.jpql.domain.dto.UserDto;
 
 import javax.persistence.*;
@@ -13,10 +14,15 @@ public class JpqlMain {
         tx.begin();
 
         // code
-        List<Long> ids = em.createQuery("select c.id from User u join u.club c", Long.class)
+        List<User> users = em.createQuery("select distinct u from User u join fetch u.club", User.class)
                 .getResultList();
 
-        System.out.println(ids);
+        for (User user : users) {
+            System.out.println("User : " + user.getId());
+            System.out.println("User : " + user.getAge());
+            System.out.println("User-Club : " + user.getClub().getId());
+            System.out.println("User-Club : " + user.getClub().getName());
+        }
         tx.commit();
         em.close();
         emf.close();
