@@ -27,11 +27,9 @@ public class JpqlMain {
         List<Club> clubs = em.createQuery("select c from Club c join c.users", Club.class)
                 .getResultList();
 
+        System.out.println(clubs.size());
         for (Club club : clubs) {
-            System.out.println("Club : " + club.getName());
-            club.getUsers().stream()
-                            .map(User::getName)
-                            .forEach(System.out::println);
+            System.out.println(club.getUsers().size());
         }
 
         tx.commit();
